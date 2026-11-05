@@ -130,3 +130,13 @@ th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertic
 .side-deco.c{right:3vw;top:8vh;width:150px;opacity:.5;animation:none}
 @media (min-width:1000px){.side-deco{display:block}}
 main,header,.footer{position:relative;z-index:1}
+
+/* ---------- Tarjeta-invitación (encabezado de páginas internas) */
+.invite-card{position:relative;width:min(420px,100%);margin:0 auto;border:8px solid #fff;border-radius:6px;box-shadow:0 18px 50px rgba(91,74,59,.22);
+  background:linear-gradient(rgba(246,242,235,.35),rgba(246,242,235,.35)),url("img/mapa.jpg") center/cover;overflow:hidden;padding:26px 20px 70px;text-align:center}
+.invite-card .ic-balloon{display:block;width:110px;margin:0 auto 6px}
+.invite-card .ic-name{font-family:var(--script);color:var(--blue);font-size:5rem;line-height:.95;margin:0}
+.invite-card .ic-sub{font-family:var(--display);font-weight:700;color:var(--sand);font-size:2.1rem;line-height:1.1;margin:0 0 14px}
+.invite-card .ic-text{font-family:var(--display);font-style:italic;font-weight:500;color:#9a7f63;font-size:1.25rem;line-height:1.35;margin:0}
+.invite-card .ic-clouds{position:absolute;left:-10%;right:-10%;bottom:-10px;width:120%;height:90px;pointer-events:none}
+.invite-card>*:not(.ic-clouds){position:relative;z-index:1}
