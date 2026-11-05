@@ -1,5 +1,5 @@
 (function () {
-  const { sb, store, esc, $, $$, toast, photoUrl, uploadPhoto, requireConfig, errMsg } = App;
+  const { sb, store, esc, $, $$, toast, photoUrl, uploadPhoto, requireConfig, errMsg, nf } = App;
   if (!requireConfig()) return;
 
   const QCOLS = "id,kind,prompt,options,image_path,hint,sort";
@@ -59,35 +59,35 @@
   }
   async function loadPoints() {
     const { data } = await sb.from("scores").select("points").eq("id", me.id).maybeSingle();
-    $("#me-points").textContent = (data ? data.points : 0) + " pts";
+    $("#me-points").textContent = nf(data ? data.points : 0) + " millas";
   }
 
   function render() {
     const el = $("#game");
     if (!state || state.mode !== "pregunta" || !question) {
       const msgs = {
-        bienvenida: "¡Bienvenidos! En un ratito arrancan los juegos 🎉",
-        galeria: "Mientras tanto, ¡subí fotos del evento! 📸",
-        ranking: "Mirá la pantalla: ¡ranking de jugadores! 🏆",
-        deseos: "Dejale un mensaje al bebé en la pestaña 💌",
-        predicciones: "Mirá la pantalla: ¡predicciones! 🔮",
+        bienvenida: "¡Bienvenidos a bordo! En un ratito arrancan los juegos.",
+        galeria: "Mientras tanto, subí fotos al diario de viaje.",
+        ranking: "Mirá la pantalla: ¡los pasajeros con más millas!",
+        deseos: "Mandale una postal a Justino desde la pestaña Postales.",
+        predicciones: "Mirá la pantalla: la bitácora de predicciones.",
       };
-      el.innerHTML = `<div class="center"><div style="font-size:3rem">⏳</div>
-        <h2>Esperando la próxima pregunta</h2><p class="muted">${esc(msgs[state && state.mode] || "Mirá la pantalla grande 👀")}</p></div>`;
+      el.innerHTML = `<div class="center"><img src="assets/img/avion.svg" alt="" class="float" style="width:150px;margin:6px auto">
+        <h2>Esperando la próxima pregunta</h2><p class="muted">${esc(msgs[state && state.mode] || "Mirá la pantalla grande.")}</p></div>`;
       return;
     }
     const q = question, opts = q.options || [];
     const revealed = state.reveal && state.correct != null;
     const closed = !state.accepting;
     let head = "";
-    if (q.kind === "bebe") head = '<p class="pill">👶 ¿Quién es el bebé?</p>';
-    else if (q.kind === "encuesta") head = '<p class="pill">📊 Encuesta</p>';
-    else head = '<p class="pill">❓ Trivia</p>';
+    if (q.kind === "bebe") head = '<p class="pill">¿Quién es este pequeño viajero?</p>';
+    else if (q.kind === "encuesta") head = '<p class="pill">Encuesta</p>';
+    else head = '<p class="pill">Trivia</p>';
     let status = "";
     if (revealed && q.kind !== "encuesta") {
-      status = myChoice == null ? "No respondiste 😅" : myChoice === state.correct ? "🎉 ¡Correcto! +100" : "❌ Uy, no era esa";
-    } else if (myChoice != null) status = "✅ Respuesta enviada. ¡Mirá la pantalla!";
-    else if (closed) status = "⏱️ Votación cerrada";
+      status = myChoice == null ? "No llegaste a responder" : myChoice === state.correct ? "¡Correcto! +100 millas ✈" : "Uy, no era esa";
+    } else if (myChoice != null) status = "Respuesta enviada. ¡Mirá la pantalla!";
+    else if (closed) status = "Votación cerrada";
     el.innerHTML = `${head}<h2>${esc(q.prompt)}</h2>
       ${q.image_path ? `<img class="qimg" src="${esc(photoUrl(q.image_path))}" alt="">` : ""}
       ${q.hint ? `<p class="muted">💡 ${esc(q.hint)}</p>` : ""}
@@ -137,7 +137,7 @@
         ok++;
       } catch (err) { toast("Error con una foto: " + errMsg(err), "err"); }
     }
-    $("#f-progress").textContent = ok ? `¡Listo! ${ok} foto(s) subida(s) 📸` : "";
+    $("#f-progress").textContent = ok ? `¡Listo! ${ok} foto(s) en el diario de viaje` : "";
     $("#f-files").value = ""; btn.disabled = false;
   });
 
@@ -149,7 +149,7 @@
       const { error } = await sb.from("wishes").insert({ name: me.name, text: $("#w-text").value.trim(), approved: !!(state && state.auto_approve_wishes) });
       if (error) throw error;
       $("#w-text").value = "";
-      toast("¡Mensaje enviado! 💌");
+      toast("¡Postal enviada!");
     } catch (err) { toast("Error: " + errMsg(err), "err"); }
     btn.disabled = false;
   });

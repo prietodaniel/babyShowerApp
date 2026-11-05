@@ -3,27 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lista de regalos</title>
+<title>Lista de regalos · Justino</title>
+<meta property="og:title" content="Lista de regalos de Justino">
+<meta property="og:description" content="Marcá lo que vas a regalar así no se repite.">
+<meta property="og:image" content="https://prietodaniel.github.io/babyShowerApp/assets/img/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital@0;1&family=Pinyon+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>">
+<link rel="icon" href="assets/img/globo-azul.svg" type="image/svg+xml">
 </head>
 <body>
+<img class="side-deco l float" src="assets/img/globo-arena.svg" alt="">
+<img class="side-deco r float" src="assets/img/globo-azul.svg" alt="">
 <header class="hero">
-  <div class="emoji">🎁</div>
-  <h1>Lista de regalos</h1>
-  <p class="muted">Marcá lo que vas a regalar así no se repite.</p>
+  <img src="assets/img/globo-azul.svg" alt="" class="float" style="width:90px">
+  <p class="script" style="font-size:3.4rem;margin:6px 0 0">Justino</p>
+  <h1 style="font-size:2.2rem">El equipaje para su viaje</h1>
+  <p class="muted">Lista de regalos · marcá lo que vas a regalar así no se repite</p>
 </header>
 <main class="wrap">
   <section class="card">
-    <label for="g-name">Tu nombre</label>
+    <label for="g-name" style="margin-top:0">Tu nombre</label>
     <input id="g-name" maxlength="120" placeholder="Para saber quién lo regala">
-    <p class="muted small" data-cfg="GIFT_NOTE"></p>
+    <p class="muted small" data-cfg="GIFT_NOTE" style="margin-bottom:0"></p>
   </section>
   <section class="card" id="gifts"><p class="muted center">Cargando…</p></section>
   <p class="center"><a class="btn ghost" href="index.html">← Volver a la invitación</a></p>
 </main>
+<p class="footer"><span class="script">Justino</span>gracias por ser parte de este viaje</p>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.js"></script>
 <script src="config.js"></script>
 <script src="assets/common.js"></script>

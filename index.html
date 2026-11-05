@@ -3,36 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Baby Shower</title>
-<meta name="description" content="Invitación al Baby Shower: confirmá asistencia, lista de regalos y juegos.">
+<title>Baby Shower de Justino</title>
+<meta name="description" content="Sábado 5 de diciembre · 16 hs. Confirmá tu asistencia, mirá la lista de regalos y sumate a los juegos.">
+<meta property="og:title" content="Baby Shower de Justino ✈️">
+<meta property="og:description" content="Sábado 5 de diciembre · 16 hs · Granaderos Puntanos 326, Santa Rosa. Confirmá tu asistencia acá.">
+<meta property="og:image" content="https://prietodaniel.github.io/babyShowerApp/assets/img/og.jpg">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital@0;1&family=Pinyon+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍼</text></svg>">
+<link rel="icon" href="assets/img/globo-azul.svg" type="image/svg+xml">
 </head>
 <body>
+<img class="side-deco l float" src="assets/img/globo-azul.svg" alt="">
+<img class="side-deco r float" src="assets/img/globo-arena.svg" alt="">
+<img class="side-deco c" src="assets/img/brujula.svg" alt="">
 <header class="hero">
-  <div class="emoji">🍼🧸</div>
-  <p class="muted">Estás invitado/a al</p>
-  <h1>Baby Shower de <span data-cfg="BABY_NAME"></span></h1>
-  <p><b data-cfg="EVENT_DATE_LABEL"></b></p>
-  <p><span data-cfg="VENUE_NAME"></span> · <a data-cfg-href="MAPS_URL" target="_blank" rel="noopener"><span data-cfg="VENUE_ADDRESS"></span> 📍</a></p>
+  <img class="plane" src="assets/img/avion.svg" alt="">
+  <img class="invite" src="assets/img/invitacion.jpg" alt="Invitación: Justino, Baby Shower. Sábado 5 de diciembre, 16 hs, Granaderos Puntanos 326, Santa Rosa">
+  <p class="countdown-title">Despegamos en</p>
   <div class="countdown" id="countdown"></div>
+  <p><a class="btn ghost sm" data-cfg-href="MAPS_URL" target="_blank" rel="noopener"><i data-icon="mapa"></i> Cómo llegar</a></p>
 </header>
 
 <main class="wrap">
   <div class="grid">
-    <a class="tile" href="#asistencia"><div class="big">✅</div><h3>Confirmar asistencia</h3><p class="muted small">Contanos si venís</p></a>
-    <a class="tile" href="regalos.html"><div class="big">🎁</div><h3>Lista de regalos</h3><p class="muted small">Elegí qué regalar</p></a>
-    <a class="tile" href="#bebe"><div class="big">👶</div><h3>¿Quién es el bebé?</h3><p class="muted small">Mandanos tu foto de bebé</p></a>
-    <a class="tile" href="#predicciones"><div class="big">🔮</div><h3>Predicciones</h3><p class="muted small">¿Cuándo nace? ¿Cuánto pesa?</p></a>
+    <a class="tile" href="#asistencia"><i data-icon="ticket"></i><h3>Confirmar asistencia</h3><p class="muted small">Reservá tu lugar en este viaje</p></a>
+    <a class="tile" href="regalos.html"><i data-icon="valija"></i><h3>Lista de regalos</h3><p class="muted small">El equipaje de Justino</p></a>
+    <a class="tile" href="#bebe"><i data-icon="camara"></i><h3>Tu foto de bebé</h3><p class="muted small">Para el juego del evento</p></a>
+    <a class="tile" href="#predicciones"><i data-icon="brujula"></i><h3>Predicciones</h3><p class="muted small">¿Cuándo aterriza Justino?</p></a>
   </div>
 
   <section class="card" id="asistencia">
-    <h2>✅ Confirmar asistencia</h2>
+    <h2 class="ico-title"><i data-icon="ticket"></i> Confirmar asistencia</h2>
     <p class="muted" data-cfg="RSVP_DEADLINE_LABEL"></p>
     <div id="rsvp-done" class="hidden center">
-      <p class="display" style="font-size:1.4rem">¡Gracias por avisarnos! 💛</p>
+      <p class="display" style="font-size:1.6rem;font-style:italic">¡Gracias por avisarnos!</p>
       <button class="btn ghost sm" id="rsvp-again">Enviar otra confirmación</button>
     </div>
     <form id="rsvp-form">
@@ -40,24 +46,24 @@
       <input id="r-name" required maxlength="120" autocomplete="name">
       <label>¿Venís?</label>
       <div class="choices">
-        <label><input type="radio" name="att" value="1" checked> 🎉 ¡Sí, voy!</label>
-        <label><input type="radio" name="att" value="0"> 😢 No puedo</label>
+        <label><input type="radio" name="att" value="1" checked> ¡Sí, voy!</label>
+        <label><input type="radio" name="att" value="0"> No puedo</label>
       </div>
       <div class="row" id="r-count">
         <div><label for="r-adults">Adultos</label><input id="r-adults" type="number" min="0" max="20" value="1"></div>
         <div><label for="r-kids">Niños</label><input id="r-kids" type="number" min="0" max="20" value="0"></div>
       </div>
-      <label for="r-phone">Teléfono (opcional)</label>
+      <label for="r-phone">Teléfono <span class="muted small">(opcional)</span></label>
       <input id="r-phone" type="tel" maxlength="40" autocomplete="tel">
-      <label for="r-msg">Mensaje (opcional)</label>
+      <label for="r-msg">Mensaje <span class="muted small">(opcional)</span></label>
       <textarea id="r-msg" maxlength="1000" placeholder="Restricciones alimentarias, comentarios…"></textarea>
       <button class="btn block" type="submit">Confirmar</button>
     </form>
   </section>
 
   <section class="card" id="bebe">
-    <h2>👶 ¿Quién es el bebé?</h2>
-    <p>Mandanos <b>una foto tuya de cuando eras bebé</b>. El día del baby shower la vamos a proyectar y todos van a tener que adivinar quién sos. 🤫 ¡No le muestres la foto a nadie!</p>
+    <h2 class="ico-title"><i data-icon="camara"></i> ¿Quién es este pequeño viajero?</h2>
+    <p>Mandanos <b>una foto tuya de cuando eras bebé</b>. El día del baby shower la vamos a proyectar y todos van a tener que adivinar quién sos. ¡No se la muestres a nadie!</p>
     <form id="baby-form">
       <label for="b-name">Tu nombre</label>
       <input id="b-name" required maxlength="120">
@@ -68,37 +74,38 @@
   </section>
 
   <section class="card" id="predicciones">
-    <h2>🔮 Predicciones</h2>
-    <p class="muted">Guardamos todas las predicciones y cuando nazca vemos quién acertó.</p>
+    <h2 class="ico-title"><i data-icon="brujula"></i> Bitácora de predicciones</h2>
+    <p class="muted">Guardamos todas las predicciones y cuando Justino aterrice vemos quién acertó.</p>
     <form id="pred-form">
       <label for="p-name">Tu nombre</label>
       <input id="p-name" required maxlength="120">
       <div class="row">
         <div><label for="p-date">Fecha de nacimiento</label><input id="p-date" type="date"></div>
-        <div><label for="p-weight">Peso (kg)</label><input id="p-weight" type="number" step="0.01" min="1" max="7" placeholder="3.25"></div>
+        <div><label for="p-weight">Peso (kg)</label><input id="p-weight" type="number" step="0.01" min="1" max="7" placeholder="3,25"></div>
         <div><label for="p-height">Altura (cm)</label><input id="p-height" type="number" step="0.5" min="30" max="65" placeholder="50"></div>
       </div>
       <div class="row">
         <div><label for="p-hair">Pelo</label>
-          <select id="p-hair"><option value="">—</option><option>Pelado/a</option><option>Poquito</option><option>Mucho pelo</option><option>Rubio</option><option>Castaño</option><option>Morocho</option><option>Colorado</option></select></div>
+          <select id="p-hair"><option value="">—</option><option>Pelado</option><option>Poquito</option><option>Mucho pelo</option><option>Rubio</option><option>Castaño</option><option>Morocho</option><option>Colorado</option></select></div>
         <div><label for="p-eyes">Ojos</label>
           <select id="p-eyes"><option value="">—</option><option>Marrones</option><option>Celestes</option><option>Verdes</option><option>Grises</option></select></div>
         <div><label for="p-like">Se va a parecer a…</label>
           <select id="p-like"><option value="">—</option><option>Mamá</option><option>Papá</option><option>Mitad y mitad</option><option>Un abuelo/a</option></select></div>
       </div>
       <label for="p-word">Su primera palabra va a ser…</label>
-      <input id="p-word" maxlength="60" placeholder="¿mamá? ¿papá? ¿pelota?">
+      <input id="p-word" maxlength="60" placeholder="¿mamá? ¿papá? ¿avión?">
       <button class="btn block" type="submit">Guardar predicción</button>
     </form>
   </section>
 
   <section class="card center">
-    <h2>🎮 El día del evento</h2>
-    <p>Vamos a tener juegos, trivia, galería de fotos y libro de deseos desde el celular.</p>
-    <a class="btn" href="jugar.html">Entrar a los juegos</a>
+    <img src="assets/img/globo-arena.svg" alt="" class="float" style="width:80px">
+    <h2>El día del evento</h2>
+    <p>Vamos a tener juegos, trivia, fotos y postales para Justino, todo desde el celular.</p>
+    <a class="btn" href="jugar.html"><i data-icon="pasaporte"></i> Entrar a los juegos</a>
   </section>
 </main>
-<p class="footer">Hecho con 💛 para <span data-cfg="BABY_NAME"></span></p>
+<p class="footer"><span class="script">Justino</span>te esperamos a bordo</p>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.js"></script>
 <script src="config.js"></script>

@@ -3,48 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Juegos del Baby Shower</title>
+<title>A bordo · Baby Shower de Justino</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital@0;1&family=Pinyon+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+<link rel="icon" href="assets/img/globo-azul.svg" type="image/svg+xml">
 </head>
 <body>
 <main class="wrap">
-  <section id="join" class="card center hidden">
-    <div style="font-size:3rem">🍼</div>
-    <h1 style="font-size:2rem">¡Bienvenido/a!</h1>
-    <p class="muted">Poné tu nombre para jugar</p>
+  <section id="join" class="card center passport hidden">
+    <img class="stamp float" src="assets/img/globo-azul.svg" alt="" style="width:80px">
+    <p class="script" style="font-size:3rem;margin:0">Justino</p>
+    <h1 style="font-size:1.9rem">Tu pasaporte</h1>
+    <p class="muted">Escribí tu nombre para subir a bordo y jugar</p>
     <form id="join-form">
-      <input id="j-name" required maxlength="60" placeholder="Tu nombre" autocomplete="given-name">
-      <button class="btn block" type="submit">Entrar</button>
+      <input id="j-name" required maxlength="60" placeholder="Tu nombre" autocomplete="given-name" style="text-align:center">
+      <button class="btn block" type="submit"><i data-icon="pasaporte"></i> Subir a bordo</button>
     </form>
   </section>
 
   <div id="app" class="hidden">
-    <p class="center" style="margin:8px 0">Hola <b id="me-name"></b> · <span class="pill" id="me-points">0 pts</span></p>
+    <p class="center" style="margin:6px 0">Pasajero/a <b id="me-name"></b> · <span class="pill" id="me-points">0 millas</span></p>
     <nav class="tabs">
-      <button data-tab="juego" class="on">🎮 Juego</button>
-      <button data-tab="fotos">📸 Fotos</button>
-      <button data-tab="deseos">💌 Deseos</button>
+      <button data-tab="juego" class="on">Juego</button>
+      <button data-tab="fotos">Fotos</button>
+      <button data-tab="deseos">Postales</button>
     </nav>
 
     <section data-pane="juego" class="card" id="game"></section>
 
     <section data-pane="fotos" class="card hidden">
-      <h2>📸 Subí fotos del evento</h2>
-      <p class="muted">Aparecen en la pantalla grande.</p>
+      <h2 class="ico-title"><i data-icon="camara"></i> Diario de viaje</h2>
+      <p class="muted">Subí fotos del baby shower: aparecen en la pantalla grande.</p>
       <input id="f-files" type="file" accept="image/*" multiple>
       <button class="btn block" id="f-send">Subir fotos</button>
       <p id="f-progress" class="muted small center"></p>
     </section>
 
     <section data-pane="deseos" class="card hidden">
-      <h2>💌 Libro de deseos</h2>
-      <p class="muted">Dejale un mensaje, consejo o deseo al bebé (o a los papás).</p>
+      <h2 class="ico-title"><i data-icon="sobre"></i> Una postal para Justino</h2>
+      <p class="muted">Dejale un mensaje, un consejo o un deseo para su viaje (o para los papás).</p>
       <form id="w-form">
-        <textarea id="w-text" required maxlength="600" placeholder="Querido bebé…"></textarea>
-        <button class="btn block alt" type="submit">Enviar mensaje</button>
+        <textarea id="w-text" required maxlength="600" placeholder="Querido Justino…"></textarea>
+        <button class="btn block alt" type="submit">Enviar postal</button>
       </form>
     </section>
   </div>

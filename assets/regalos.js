@@ -18,8 +18,8 @@
         <div>
           <h3>${esc(g.name)}</h3>
           ${g.description ? `<div class="muted small">${esc(g.description)}</div>` : ""}
-          ${g.link ? `<a class="small" href="${esc(g.link)}" target="_blank" rel="noopener">Ver ejemplo ↗</a>` : ""}
-          <div style="margin-top:4px">${status} ${mine.has(g.id) ? '<span class="pill warn">Lo regalás vos 💛</span>' : ""}</div>
+          ${g.link ? `<a class="small" href="${esc(g.link)}" target="_blank" rel="noopener">Ver ejemplo</a>` : ""}
+          <div style="margin-top:4px">${status} ${mine.has(g.id) ? '<span class="pill warn">Lo regalás vos</span>' : ""}</div>
         </div>
         ${done ? "" : `<button class="btn sm" data-id="${g.id}">Lo regalo yo</button>`}
       </div>`;
@@ -36,7 +36,7 @@
       const id = +b.dataset.id;
       const { data, error } = await sb.rpc("reserve_gift", { p_gift: id, p_name: name });
       if (error) throw error;
-      if (data) { mine.add(id); store.set("my_gifts", [...mine]); store.set("guest_name", name); toast("¡Gracias! Quedó anotado 🎁"); }
+      if (data) { mine.add(id); store.set("my_gifts", [...mine]); store.set("guest_name", name); toast("¡Gracias! Quedó anotado en el equipaje"); }
       else toast("Ups, alguien lo reservó recién", "err");
     } catch (err) { toast("Error: " + errMsg(err), "err"); }
     await load();

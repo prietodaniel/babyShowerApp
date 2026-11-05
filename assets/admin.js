@@ -62,7 +62,7 @@
       q(sb.from("questions").select("*").order("sort").order("id")),
     ]);
     const cur = qs.find((x) => x.id === st.question_id);
-    const modes = [["bienvenida", "🏠 Bienvenida + QR"], ["galeria", "📸 Galería"], ["pregunta", "❓ Pregunta"], ["ranking", "🏆 Ranking"], ["deseos", "💌 Deseos"], ["predicciones", "🔮 Predicciones"]];
+    const modes = [["bienvenida", "🏠 Bienvenida + QR"], ["galeria", "📸 Galería"], ["pregunta", "❓ Pregunta"], ["ranking", "🏆 Ranking"], ["deseos", "💌 Postales"], ["predicciones", "🔮 Predicciones"]];
     pane.innerHTML = `
       <section class="card">
         <h3>📺 Qué muestra la pantalla</h3>
@@ -299,7 +299,7 @@
     const ws = await q(sb.from("wishes").select("*").order("created_at"));
     pane.innerHTML = `<section class="card">
       <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center">
-        <h3>💌 Deseos (${ws.length})</h3><button class="btn alt sm" data-act="wbook">📖 Libro de deseos (imprimir / PDF)</button></div>
+        <h3>💌 Postales (${ws.length})</h3><button class="btn alt sm" data-act="wbook">📖 Libro de postales (imprimir / PDF)</button></div>
       ${ws.map((w) => `<div class="qrow"><div><b>${esc(w.name)}</b>: ${esc(w.text)}</div><div style="white-space:nowrap">
         ${w.approved ? '<span class="pill">✔</span>' : `<button class="btn sm" data-act="wapprove" data-id="${w.id}">Aprobar</button>`}
         <button class="btn danger sm" data-act="wdel" data-id="${w.id}">✕</button></div></div>`).join("") || '<p class="muted">Todavía no hay mensajes.</p>'}
@@ -309,14 +309,21 @@
     actions.wbook = () => {
       const win = window.open("", "_blank");
       if (!win) return toast("Permití las ventanas emergentes", "err");
-      win.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Libro de deseos</title>
-        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-        <style>body{font-family:Nunito,sans-serif;color:#3d3a4b;max-width:700px;margin:40px auto;padding:0 20px}h1{font-family:Fredoka;text-align:center;font-size:2.4rem}
-        .w{border:2px dashed #f4b9a4;border-radius:16px;padding:16px 20px;margin:16px 0;break-inside:avoid}.w p{font-size:1.15rem;margin:0 0 8px}.w b{color:#5f9480}
-        .sub{text-align:center;color:#7a7688}</style></head><body>
-        <h1>💌 Libro de deseos para ${esc(CFG.BABY_NAME)}</h1><p class="sub">Baby Shower · ${esc(CFG.EVENT_DATE_LABEL)}</p>
-        ${ws.map((w) => `<div class="w"><p>“${esc(w.text)}”</p><b>— ${esc(w.name)}</b></div>`).join("")}
-        <script>setTimeout(()=>print(),800)<\/script></body></html>`);
+      win.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Postales para ${esc(CFG.BABY_NAME)}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=EB+Garamond&family=Pinyon+Script&display=swap" rel="stylesheet">
+        <style>body{font-family:"EB Garamond",serif;color:#5b4a3b;max-width:760px;margin:30px auto;padding:0 20px;background:#fff}
+        .cover{text-align:center;padding:60px 0 40px;page-break-after:always}
+        .cover img{width:120px}.cover h1{font-family:"Pinyon Script";font-weight:400;font-size:5rem;color:#7fa2ab;margin:10px 0 0}
+        .cover h2{font-family:"Cormorant Garamond";font-size:2rem;color:#b39c83;margin:0}.cover p{font-style:italic;color:#8c7b6a}
+        .pc{display:flex;gap:24px;border:1px solid #e2d7c5;border-radius:6px;padding:22px;margin:18px 0;break-inside:avoid;background:#fdfaf3}
+        .pc .m{flex:2;font-family:"Cormorant Garamond";font-style:italic;font-size:1.35rem;line-height:1.35;border-right:1px solid #e2d7c5;padding-right:20px}
+        .pc .f{font-family:"Pinyon Script";font-style:normal;font-size:1.8rem;color:#5a808a;display:block;margin-top:8px}
+        .pc .a{flex:1;display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+        .pc .a img{width:56px;border:3px dotted #e2d7c5;padding:4px;transform:rotate(4deg)}
+        .pc .a span{font-family:"Cormorant Garamond";align-self:stretch;border-bottom:1px solid #e2d7c5}</style></head><body>
+        <div class="cover"><img src="${location.href.replace(/[^/]*$/, "")}assets/img/globo-azul.svg"><h1>${esc(CFG.BABY_NAME)}</h1><h2>Postales de tu Baby Shower</h2><p>${esc(CFG.EVENT_DATE_LABEL)}</p></div>
+        ${ws.map((w) => `<div class="pc"><div class="m">“${esc(w.text)}”<span class="f">${esc(w.name)}</span></div><div class="a"><img src="${location.href.replace(/[^/]*$/, "")}assets/img/globo-azul.svg"><span>Para: ${esc(CFG.BABY_NAME)}</span></div></div>`).join("")}
+        <script>setTimeout(()=>print(),1200)<\/script></body></html>`);
       win.document.close();
     };
   }
@@ -347,8 +354,8 @@
     const sc = await q(sb.from("scores").select("*").order("points", { ascending: false }));
     pane.innerHTML = `<section class="card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
       <h3>🎮 Jugadores (${sc.length})</h3><button class="btn danger sm" data-act="reset">🧹 Reiniciar juego (borra respuestas)</button></div>
-      <table><tr><th>#</th><th>Nombre</th><th>Puntos</th><th></th></tr>
-      ${sc.map((s, i) => `<tr><td>${i + 1}</td><td>${esc(s.name)}</td><td>${s.points}</td><td><button class="btn danger sm" data-act="pldel" data-id="${s.id}">✕</button></td></tr>`).join("")}</table></section>`;
+      <table><tr><th>#</th><th>Nombre</th><th>Millas</th><th></th></tr>
+      ${sc.map((s, i) => `<tr><td>${i + 1}</td><td>${esc(s.name)}</td><td>${App.nf(s.points)}</td><td><button class="btn danger sm" data-act="pldel" data-id="${s.id}">✕</button></td></tr>`).join("")}</table></section>`;
     actions.pldel = async (d) => { if (!confirm("¿Borrar este jugador?")) return; await q(sb.from("players").delete().eq("id", d.id)); jugadores(); };
     actions.reset = async () => {
       if (!confirm("Esto borra TODAS las respuestas y marca las preguntas como no jugadas. ¿Seguro?")) return;

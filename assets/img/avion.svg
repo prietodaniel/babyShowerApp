@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 130">
+  <defs>
+    <filter id="wc" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="8" result="b"/>
+      <feColorMatrix in="b" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.7 0 0 0 0.55" result="a"/>
+      <feComposite in="d" in2="a" operator="in"/>
+    </filter>
+  </defs>
+  <g filter="url(#wc)" stroke="#7c6a58" stroke-width="1.2" stroke-linejoin="round">
+    <!-- ala inferior (detrás) -->
+    <rect x="98" y="76" width="78" height="8" rx="4" fill="#d9ccb8"/>
+    <!-- tren de aterrizaje -->
+    <path d="M128 78l-6 26M146 78l6 26" fill="none"/>
+    <circle cx="121" cy="106" r="8" fill="#9a8570"/><circle cx="153" cy="106" r="8" fill="#9a8570"/>
+    <circle cx="121" cy="106" r="3" fill="#efe6d6"/><circle cx="153" cy="106" r="3" fill="#efe6d6"/>
+    <!-- cola -->
+    <path d="M40 62L22 34h14l22 26z" fill="#7fa2ab"/>
+    <path d="M30 66l-14 6 4 4 28-4z" fill="#efe6d6"/>
+    <!-- fuselaje -->
+    <path d="M36 62c30-14 110-16 158-8l14 6c-4 10-60 16-150 14-14 0-20-6-22-12z" fill="#8fb1b9"/>
+    <path d="M60 64c40-4 100-5 140-2" fill="none" stroke-opacity=".5"/>
+    <!-- cabina y piloto -->
+    <path d="M114 52c2-10 18-10 20 0" fill="#efe6d6"/>
+    <circle cx="124" cy="44" r="7" fill="#c8a982"/>
+    <path d="M117 42h14" stroke-width="2.4" stroke="#5f8790"/>
+    <path d="M118 46c-6 4-14 6-24 4" fill="none" stroke="#c96f5b" stroke-width="2"/>
+    <!-- ala superior -->
+    <rect x="92" y="26" width="90" height="9" rx="4.5" fill="#efe6d6"/>
+    <path d="M112 35v41M160 35v41M118 35l36 41" fill="none" stroke-width="1"/>
+    <!-- motor y hélice -->
+    <path d="M200 52c8 0 12 4 12 8s-4 8-12 8z" fill="#9a8570"/>
+    <ellipse cx="216" cy="60" rx="3.5" ry="24" fill="#efe6d6" fill-opacity=".7"/>
+    <circle cx="214" cy="60" r="3" fill="#7c6a58"/>
+  </g>
+</svg>

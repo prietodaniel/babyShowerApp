@@ -79,7 +79,26 @@
   const errMsg = (e) => (e && (e.message || e.error_description)) || String(e);
   const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-  window.App = { CFG, sb, store, esc, $, $$, toast, photoUrl, resizeImage, uploadPhoto, requireConfig, fillConfigText, baseUrl, errMsg, shuffle };
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fillConfigText);
-  else fillConfigText();
+  // Íconos de línea estilo grabado (stroke = color del texto)
+  const ICONS = {
+    ticket: '<path d="M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4z"/><path d="M15 7v10" stroke-dasharray="2 2"/>',
+    valija: '<rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8M7 8v12M17 8v12"/>',
+    camara: '<path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/>',
+    brujula: '<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
+    sobre: '<rect x="3" y="6" width="18" height="13" rx="1.5"/><path d="M3 7.5l9 6.5 9-6.5"/>',
+    avion: '<path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
+    globo: '<path d="M12 2a7 7 0 0 0-7 7c0 3.6 3 6.2 5 8h4c2-1.8 5-4.4 5-8a7 7 0 0 0-7-7z"/><path d="M12 2c-2 2-3 4.5-3 7s1 5.5 1 8M12 2c2 2 3 4.5 3 7s-1 5.5-1 8"/><rect x="10" y="19.5" width="4" height="2.5" rx=".5"/><path d="M10 17l.3 2.5M14 17l-.3 2.5"/>',
+    mapa: '<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>',
+    pasaporte: '<rect x="5" y="2.5" width="14" height="19" rx="1.5"/><circle cx="12" cy="10" r="3.5"/><path d="M8.5 10h7M12 6.5c-1 1-1.4 2.2-1.4 3.5s.4 2.5 1.4 3.5c1-1 1.4-2.2 1.4-3.5S13 7.5 12 6.5M9 17h6"/>',
+    copa: '<path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4.5a2.5 2.5 0 0 0 2.6 3.5M17 6h2.5a2.5 2.5 0 0 1-2.6 3.5"/>',
+    reloj: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  };
+  const icon = (n) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n] || ""}</svg>`;
+  function fillIcons(root) { $$("[data-icon]", root).forEach((el) => { el.classList.add("ico"); el.innerHTML = icon(el.dataset.icon); }); }
+  const nf = (n) => Number(n || 0).toLocaleString("es-AR");
+
+  window.App = { CFG, sb, store, esc, $, $$, toast, photoUrl, resizeImage, uploadPhoto, requireConfig, fillConfigText, baseUrl, errMsg, shuffle, icon, fillIcons, nf };
+  const init = () => { fillConfigText(); fillIcons(); };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();

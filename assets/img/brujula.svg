@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <filter id="wc" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <g filter="url(#wc)" stroke="#8a7461" fill="none" stroke-width="1.1">
+    <circle cx="100" cy="100" r="88"/>
+    <circle cx="100" cy="100" r="80" stroke-dasharray="2 4"/>
+    <circle cx="100" cy="100" r="30"/>
+    <path d="M100 100L136 64M100 100L64 64M100 100L136 136M100 100L64 136" stroke-opacity=".5"/>
+    <path d="M100 100l14-14 8 8zM100 100l-14-14-8 8zM100 100l14 14 8-8zM100 100l-14 14-8-8z" fill="#c9b49a" fill-opacity=".6"/>
+    <path d="M100 14l12 86h-24z" fill="#7fa2ab" fill-opacity=".85"/>
+    <path d="M100 186l12-86h-24z" fill="#efe6d6"/>
+    <path d="M186 100l-86 12v-24z" fill="#efe6d6"/>
+    <path d="M14 100l86 12v-24z" fill="#efe6d6"/>
+    <circle cx="100" cy="100" r="5" fill="#8a7461"/>
+  </g>
+  <g font-family="Georgia,serif" font-size="16" fill="#8a7461" text-anchor="middle" font-style="italic">
+    <text x="100" y="10">N</text>
+  </g>
+</svg>

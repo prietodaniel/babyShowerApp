@@ -1,13 +1,13 @@
 (function () {
   const { CFG, sb, store, $, toast, uploadPhoto, requireConfig, errMsg } = App;
-  document.title = "Baby Shower de " + (CFG.BABY_NAME || "");
+  
 
   // Cuenta regresiva
   const target = new Date(CFG.EVENT_DATE).getTime();
   function tick() {
     const el = $("#countdown");
     let d = Math.max(0, target - Date.now());
-    if (!d) { el.innerHTML = '<div><b>🎉</b><span>¡Es hoy!</span></div>'; return; }
+    if (!d) { el.innerHTML = '<div><b>¡Hoy!</b><span>despegamos</span></div>'; return; }
     const parts = [["días", 864e5], ["horas", 36e5], ["min", 6e4], ["seg", 1e3]].map(([l, ms]) => {
       const v = Math.floor(d / ms); d -= v * ms; return `<div><b>${v}</b><span>${l}</span></div>`;
     });
@@ -48,7 +48,7 @@
     store.set("rsvp_done", true);
     store.set("guest_name", row.name);
     rf.classList.add("hidden"); $("#rsvp-done").classList.remove("hidden");
-    toast(attending ? "¡Te esperamos! 🎉" : "¡Gracias por avisar!");
+    toast(attending ? "¡Te esperamos a bordo! ✈" : "¡Gracias por avisar!");
   }));
 
   // Prellenar nombres
@@ -66,7 +66,7 @@
     if (error) throw error;
     store.set("guest_name", name);
     bf.reset(); $("#b-name").value = name;
-    toast("¡Foto recibida! 🤫 Shhh…");
+    toast("¡Foto recibida! Shhh… es un secreto");
   }));
 
   // Predicciones
@@ -83,6 +83,6 @@
     if (error) throw error;
     store.set("guest_name", row.name);
     pf.reset(); $("#p-name").value = row.name;
-    toast("¡Predicción guardada! 🔮");
+    toast("¡Predicción guardada en la bitácora!");
   }));
 })();
