@@ -1,8 +1,8 @@
 // ⚙️ Configuración del Baby Shower — editá estos valores.
 window.BABY_CONFIG = {
-  // Supabase → Project Settings → API
-  SUPABASE_URL: "https://TU-PROYECTO.supabase.co",
-  SUPABASE_ANON_KEY: "TU-ANON-KEY",
+  // Supabase → Project Settings → API Keys (publishable key: sb_publishable_...)
+  SUPABASE_URL: "https://owzstmylediimgfvjrba.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_xjSiSxGgeUCNT2swdFfU7w_RMgdK-OK",
 
   // Textos del evento
   BABY_NAME: "nuestro bebé",          // ej: "Martina" o "Benjamín"
