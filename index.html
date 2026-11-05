@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Baby Shower</title>
+<meta name="description" content="Invitación al Baby Shower: confirmá asistencia, lista de regalos y juegos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍼</text></svg>">
+</head>
+<body>
+<header class="hero">
+  <div class="emoji">🍼🧸</div>
+  <p class="muted">Estás invitado/a al</p>
+  <h1>Baby Shower de <span data-cfg="BABY_NAME"></span></h1>
+  <p><b data-cfg="EVENT_DATE_LABEL"></b></p>
+  <p><span data-cfg="VENUE_NAME"></span> · <a data-cfg-href="MAPS_URL" target="_blank" rel="noopener"><span data-cfg="VENUE_ADDRESS"></span> 📍</a></p>
+  <div class="countdown" id="countdown"></div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+    <a class="tile" href="#asistencia"><div class="big">✅</div><h3>Confirmar asistencia</h3><p class="muted small">Contanos si venís</p></a>
+    <a class="tile" href="regalos.html"><div class="big">🎁</div><h3>Lista de regalos</h3><p class="muted small">Elegí qué regalar</p></a>
+    <a class="tile" href="#bebe"><div class="big">👶</div><h3>¿Quién es el bebé?</h3><p class="muted small">Mandanos tu foto de bebé</p></a>
+    <a class="tile" href="#predicciones"><div class="big">🔮</div><h3>Predicciones</h3><p class="muted small">¿Cuándo nace? ¿Cuánto pesa?</p></a>
+  </div>
+
+  <section class="card" id="asistencia">
+    <h2>✅ Confirmar asistencia</h2>
+    <p class="muted" data-cfg="RSVP_DEADLINE_LABEL"></p>
+    <div id="rsvp-done" class="hidden center">
+      <p class="display" style="font-size:1.4rem">¡Gracias por avisarnos! 💛</p>
+      <button class="btn ghost sm" id="rsvp-again">Enviar otra confirmación</button>
+    </div>
+    <form id="rsvp-form">
+      <label for="r-name">Nombre y apellido</label>
+      <input id="r-name" required maxlength="120" autocomplete="name">
+      <label>¿Venís?</label>
+      <div class="choices">
+        <label><input type="radio" name="att" value="1" checked> 🎉 ¡Sí, voy!</label>
+        <label><input type="radio" name="att" value="0"> 😢 No puedo</label>
+      </div>
+      <div class="row" id="r-count">
+        <div><label for="r-adults">Adultos</label><input id="r-adults" type="number" min="0" max="20" value="1"></div>
+        <div><label for="r-kids">Niños</label><input id="r-kids" type="number" min="0" max="20" value="0"></div>
+      </div>
+      <label for="r-phone">Teléfono (opcional)</label>
+      <input id="r-phone" type="tel" maxlength="40" autocomplete="tel">
+      <label for="r-msg">Mensaje (opcional)</label>
+      <textarea id="r-msg" maxlength="1000" placeholder="Restricciones alimentarias, comentarios…"></textarea>
+      <button class="btn block" type="submit">Confirmar</button>
+    </form>
+  </section>
+
+  <section class="card" id="bebe">
+    <h2>👶 ¿Quién es el bebé?</h2>
+    <p>Mandanos <b>una foto tuya de cuando eras bebé</b>. El día del baby shower la vamos a proyectar y todos van a tener que adivinar quién sos. 🤫 ¡No le muestres la foto a nadie!</p>
+    <form id="baby-form">
+      <label for="b-name">Tu nombre</label>
+      <input id="b-name" required maxlength="120">
+      <label for="b-file">Foto de bebé</label>
+      <input id="b-file" type="file" accept="image/*" required>
+      <button class="btn block alt" type="submit">Enviar foto</button>
+    </form>
+  </section>
+
+  <section class="card" id="predicciones">
+    <h2>🔮 Predicciones</h2>
+    <p class="muted">Guardamos todas las predicciones y cuando nazca vemos quién acertó.</p>
+    <form id="pred-form">
+      <label for="p-name">Tu nombre</label>
+      <input id="p-name" required maxlength="120">
+      <div class="row">
+        <div><label for="p-date">Fecha de nacimiento</label><input id="p-date" type="date"></div>
+        <div><label for="p-weight">Peso (kg)</label><input id="p-weight" type="number" step="0.01" min="1" max="7" placeholder="3.25"></div>
+        <div><label for="p-height">Altura (cm)</label><input id="p-height" type="number" step="0.5" min="30" max="65" placeholder="50"></div>
+      </div>
+      <div class="row">
+        <div><label for="p-hair">Pelo</label>
+          <select id="p-hair"><option value="">—</option><option>Pelado/a</option><option>Poquito</option><option>Mucho pelo</option><option>Rubio</option><option>Castaño</option><option>Morocho</option><option>Colorado</option></select></div>
+        <div><label for="p-eyes">Ojos</label>
+          <select id="p-eyes"><option value="">—</option><option>Marrones</option><option>Celestes</option><option>Verdes</option><option>Grises</option></select></div>
+        <div><label for="p-like">Se va a parecer a…</label>
+          <select id="p-like"><option value="">—</option><option>Mamá</option><option>Papá</option><option>Mitad y mitad</option><option>Un abuelo/a</option></select></div>
+      </div>
+      <label for="p-word">Su primera palabra va a ser…</label>
+      <input id="p-word" maxlength="60" placeholder="¿mamá? ¿papá? ¿pelota?">
+      <button class="btn block" type="submit">Guardar predicción</button>
+    </form>
+  </section>
+
+  <section class="card center">
+    <h2>🎮 El día del evento</h2>
+    <p>Vamos a tener juegos, trivia, galería de fotos y libro de deseos desde el celular.</p>
+    <a class="btn" href="jugar.html">Entrar a los juegos</a>
+  </section>
+</main>
+<p class="footer">Hecho con 💛 para <span data-cfg="BABY_NAME"></span></p>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/index.js"></script>
+</body>
+</html>

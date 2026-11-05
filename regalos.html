@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lista de regalos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>">
+</head>
+<body>
+<header class="hero">
+  <div class="emoji">🎁</div>
+  <h1>Lista de regalos</h1>
+  <p class="muted">Marcá lo que vas a regalar así no se repite.</p>
+</header>
+<main class="wrap">
+  <section class="card">
+    <label for="g-name">Tu nombre</label>
+    <input id="g-name" maxlength="120" placeholder="Para saber quién lo regala">
+    <p class="muted small" data-cfg="GIFT_NOTE"></p>
+  </section>
+  <section class="card" id="gifts"><p class="muted center">Cargando…</p></section>
+  <p class="center"><a class="btn ghost" href="index.html">← Volver a la invitación</a></p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/regalos.js"></script>
+</body>
+</html>

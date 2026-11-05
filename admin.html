@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin · Baby Shower</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+<style>.wrap{max-width:1000px}.modes .btn{margin:4px}.qrow{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}.qrow.cur{background:#eef6f2;border-radius:10px;padding:10px}</style>
+</head>
+<body>
+<main class="wrap">
+  <section id="login" class="card hidden" style="max-width:420px;margin:40px auto">
+    <h2>⚙️ Admin</h2>
+    <form id="login-form">
+      <label for="l-email">Email</label><input id="l-email" type="email" required autocomplete="username">
+      <label for="l-pass">Contraseña</label><input id="l-pass" type="password" required autocomplete="current-password">
+      <button class="btn block">Entrar</button>
+    </form>
+  </section>
+
+  <div id="panel" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+      <h2 style="margin:8px 0">⚙️ Panel del Baby Shower</h2>
+      <div><a class="btn ghost sm" href="pantalla.html" target="_blank">📺 Abrir pantalla</a> <button class="btn ghost sm" id="logout">Salir</button></div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button data-tab="control" class="on">🎛️ Control</button>
+      <button data-tab="preguntas">❓ Preguntas</button>
+      <button data-tab="invitados">✅ Asistencia</button>
+      <button data-tab="regalos">🎁 Regalos</button>
+      <button data-tab="fotos">📸 Fotos</button>
+      <button data-tab="deseos">💌 Deseos</button>
+      <button data-tab="bebes">👶 Fotos bebé</button>
+      <button data-tab="predicciones">🔮 Predicciones</button>
+      <button data-tab="jugadores">🎮 Jugadores</button>
+    </nav>
+    <div id="pane"></div>
+  </div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/admin.js"></script>
+</body>
+</html>
