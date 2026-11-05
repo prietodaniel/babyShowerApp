@@ -186,11 +186,16 @@ create policy wishes_insert on wishes for insert to anon, authenticated with che
   approved = false or (select auto_approve_wishes from state where id = 1)
 );
 
+-- Permisos explícitos (funciona con o sin "Automatically expose new tables")
+grant usage on schema public to anon, authenticated;
+grant usage, select on all sequences in schema public to anon, authenticated;
+grant select, insert, update, delete on all tables in schema public to authenticated;
+grant insert on rsvps, baby_submissions, predictions, players, answers, photos, wishes to anon;
+grant select on predictions, players, state, answers, photos, wishes, gifts_public, scores to anon;
+
 -- los invitados no pueden ver la respuesta correcta
 revoke select on questions from anon;
 grant select (id, kind, prompt, options, image_path, hint, sort) on questions to anon;
-
-grant select on gifts_public, scores to anon, authenticated;
 
 -- ---------------------------------------------------------------- Storage
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
